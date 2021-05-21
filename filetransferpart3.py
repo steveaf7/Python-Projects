@@ -6,6 +6,12 @@ import tkinter.filedialog
 import shutil
 import os
 import time
+from tkinter import messagebox
+
+def askQuit(self):
+    if messagebox.askokcancel("Exit Program", "Ok to exit application"):
+        self.master.destroy()
+        os._exit(0)
 
 def askDir(self):
     global source 
@@ -41,11 +47,12 @@ class ParentWindow(Frame):
     def __init__(self,master):
         Frame.__init__(self)
         self.master = master
+        self.master.title("File Transfer Program")
 
         #labels for above the text boxes
-        self.lbl_transferFrom = Label(self.master,text="Transfer From")
-        self.lbl_transferFrom.grid(row=0,column=4)
-        self.lbl_transferTo = Label(self.master,text="Transfer To")
+        self.lbl_transferFrom = Label(self.master,text="Source")
+        self.lbl_transferFrom.grid(row=0,column=4,pady=(20,0))
+        self.lbl_transferTo = Label(self.master,text="Destination")
         self.lbl_transferTo.grid(row=2,column=4)
         
         #left side browse buttons that open up a window to choose a file.
@@ -65,7 +72,7 @@ class ParentWindow(Frame):
         self.txt_browse2.grid(row=3, column=4,  padx=10, pady=10)
 
 
-        self.btn_close = Button(self.master,width=12,height=2,text="Close Program")
+        self.btn_close = Button(self.master,width=12,height=2,text="Close Program",command=lambda: askQuit(self))
         self.btn_close.grid(row=4, column=4, columnspan=3, padx=10, pady=10,sticky=E)
 
 
