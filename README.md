@@ -1,5 +1,5 @@
-# Basic Python-Projects
-For projects created during The Tech Academy's Python course, these are basic projects written in Python. 
+# Python-Projects
+These are projects written in Python. 
 They use various modules such as tkinter or sqlite3
 
 ## Projects
